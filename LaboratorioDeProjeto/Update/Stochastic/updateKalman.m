@@ -1,24 +1,21 @@
 %TODO: calcular v e I
 %      verificar tamadnho das matrizes
-%      Há parâmetros que têm de ser passados num vetor
+%      HÃ¡ parÃ¢metros que tÃªm de ser passados num vetor
  
-function [x, p, y] = updateKalman(struct)
-    x = struct.x;
-    p = struct.p;
-    h = struct.h;
-    r = struct.r;
-    u = struct.u;
-    q = struct.q;
-    
-    xkmin1 = struct.kmin1;
+function [x, p, y] = updateKalman(values)
+    x = values.x;
+    p = values.p;
+    h = values.h;
+    r = values.r;
+    u = values.u;
+    q = values.q;
+    z = values.z
+	
     
     w = mvnrnd(0, q);
     v = mvnrnd(0, r);
-        
-    xk = f * xkmin1 + B * u + w;
-    
-    z = h * xk + v;
-    
+     
+   
     
     %Innovation or measurement pre-fit residual
     y = z - h * x;
